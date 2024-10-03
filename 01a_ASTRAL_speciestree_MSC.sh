@@ -45,6 +45,11 @@ fi
 # 3 - Run ASTRAL to infer species tree topology and branch lengths (in coalescent units) from the ML gene trees
 # bootstrap trees are used to quantify node support with multilocus bootstrapping
 astral -i ml_best.trees -b ml_boot.txt -r 1000 -o species_boot.trees || { echo "Error running ASTRAL"; exit 1; }
+# The output file "species_boot.trees" contains 1002 lines, 
+# the first 1000 lines are the species trees estimated for each of the first 1000 bootstrap trees for each gene 
+# line 1001 is a consensus tree
+# the last line is the species tree generated from ML gene trees
+tail -n 1 species_boot.trees > species.tree || { echo "Error creating species.tree"; exit 1; }
 
 # 4 - Generate gCF and sCF
 iqtree2 -t species.tree --gcf ml_best.trees -s "${CONCAT_ALIGNMENT}" --scf 100 --prefix 30AX_ASTRAL_species_tree --cf-verbose --df-tree --cf-quartet || { echo "Error running IQ-TREE 2 for gCF and sCF"; exit 1; }
@@ -52,7 +57,8 @@ iqtree2 -t species.tree --gcf ml_best.trees -s "${CONCAT_ALIGNMENT}" --scf 100 -
 # Determine quartet support (% of quartets in the gene trees that agree with the branch)
 # for the main topology, first alternative and second alternative
 astral -i ml_best.trees -b ml_boot.txt -r 1000 -t 8 -o species_boot_t8.trees || { echo "Error running ASTRAL with -t 8"; exit 1; }
-tail -n 1 species_boot.trees > species.tree || { echo "Error creating species.tree"; exit 1; }
+# Export branch annotations in .csv (needed for discordance analyses) 
+astral -i ml_best.trees -b ml_boot.txt -r 1000 -t 16 -o species_boot_t16.trees || { echo "Error running ASTRAL with -t 8"; exit 1; }
 
 # 5 - Generate ML concatenated phylogeny IQ-TREE 2
 mkdir -p "${CONCAT_TREE}"
