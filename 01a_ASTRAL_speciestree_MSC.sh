@@ -2,7 +2,7 @@
 
 # Set paths
 BASE_DIR="$(pwd)/Phylogenomic_pipeline"
-DATA_DIR="${BASE_DIR}/01_initial_data/30AX"
+DATA_DIR="${BASE_DIR}/01_initial_data/30AX_MSAs"
 GENE_TREES_DIR="${BASE_DIR}/02_phylogenies/01a_30AX_MLgenetrees"
 ASTRAL_DIR="${BASE_DIR}/02_phylogenies/01b_30AX_ASTRAL"
 CONCAT_ALIGNMENT="${DATA_DIR}/30AX_concatenated/30AX_concatenated.fasta"
