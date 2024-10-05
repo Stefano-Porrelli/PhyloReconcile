@@ -49,5 +49,6 @@ conda install -y bioconda::newick_utils
 # Example: curl -L https://example.com/data.zip -o "${DATA_DIR}/data.zip"
 #          unzip "${DATA_DIR}/data.zip" -d "${DATA_DIR}"
 cp /Users/stefano/Desktop/30AX_MSAs.tar.gz "${DATA_DIR}"
+tar -xvzf "${DATA_DIR}/30AX_MSAs.tar.gz" -C "${DATA_DIR}"
 
 echo "Setup and data preparation completed."
