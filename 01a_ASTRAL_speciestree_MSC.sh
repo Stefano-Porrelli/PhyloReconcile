@@ -49,10 +49,10 @@ astral -i ml_best.trees -b ml_boot.txt -r 1000 -o species_boot.trees || { echo "
 # the first 1000 lines are the species trees estimated for each of the first 1000 bootstrap trees for each gene 
 # line 1001 is a consensus tree
 # the last line is the species tree generated from ML gene trees
-tail -n 1 species_boot.trees > species.tree || { echo "Error creating species.tree"; exit 1; }
+tail -n 1 species_boot.trees > 30AX_ASTRAL_ML_species.tree || { echo "Error creating species.tree"; exit 1; }
 
 # 4 - Generate gCF and sCF
-iqtree2 -t species.tree --gcf ml_best.trees -s "${CONCAT_ALIGNMENT}" --scf 100 --prefix 30AX_ASTRAL_species_tree --cf-verbose --df-tree --cf-quartet || { echo "Error running IQ-TREE 2 for gCF and sCF"; exit 1; }
+iqtree2 -t 30AX_ASTRAL_ML_species.tree --gcf ml_best.trees -s "${CONCAT_ALIGNMENT}" --scf 100 --prefix 30AX_ASTRAL_ML_species_tree --cf-verbose --df-tree --cf-quartet || { echo "Error running IQ-TREE 2 for gCF and sCF"; exit 1; }
 
 # Determine quartet support (% of quartets in the gene trees that agree with the branch)
 # for the main topology, first alternative and second alternative
