@@ -57,8 +57,8 @@ iqtree2 -t 30AX_ASTRAL_ML_species.tree --gcf ml_best.trees -s "${CONCAT_ALIGNMEN
 # Determine quartet support (% of quartets in the gene trees that agree with the branch)
 # for the main topology, first alternative and second alternative
 astral -i ml_best.trees -b ml_boot.txt -r 1000 -t 8 -o species_boot_t8.trees || { echo "Error running ASTRAL with -t 8"; exit 1; }
-# Export branch annotations in .csv (needed for discordance analyses) 
-astral -i ml_best.trees -b ml_boot.txt -r 1000 -t 16 -o species_boot_t16.trees || { echo "Error running ASTRAL with -t 8"; exit 1; }
+# Export branch annotations in tab delimited file
+astral -i ml_best.trees -b ml_boot.txt -r 1000 -t 16 -o species_boot_t16.trees || { echo "Error running ASTRAL with -t 16"; exit 1; }
 
 # 5 - Generate ML concatenated phylogeny IQ-TREE 2
 mkdir -p "${CONCAT_TREE}"
