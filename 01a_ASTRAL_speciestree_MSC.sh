@@ -63,7 +63,7 @@ astral -i ml_best.trees -b ml_boot.txt -r 1000 -t 16 -o species_boot_t16.trees |
 # 5 - Generate ML concatenated phylogeny IQ-TREE 2
 mkdir -p "${CONCAT_TREE}"
 cd "${CONCAT_TREE}" || exit
-iqtree2 -s "${CONCAT_ALIGNMENT}" -p "${PARTITION}" --prefix 30AX_MLconcatenation -B 1000 -T AUTO || { echo "Error running IQ-TREE 2 for ML concatenation"; exit 1; }
+iqtree2 -s "${CONCAT_ALIGNMENT}" -p "${PARTITION}" --prefix 30AX_ML_concatenation -B 1000 -T AUTO || { echo "Error running IQ-TREE 2 for ML concatenation"; exit 1; }
 
 echo "ASTRAL species tree with bootstrap and Concordance values for node support generated."
 echo "ML concatenation phylogeny generated."
