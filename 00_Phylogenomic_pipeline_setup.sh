@@ -45,10 +45,8 @@ conda install -y soil::bcftools
 conda install -y bioconda::newick_utils
 
 # Retrieve data
-# (Instructions or commands for retrieving data files go here)
-# Example: curl -L https://example.com/data.zip -o "${DATA_DIR}/data.zip"
-#          unzip "${DATA_DIR}/data.zip" -d "${DATA_DIR}"
-cp /Users/stefano/Desktop/30AX_MSAs.tar.gz "${DATA_DIR}"
-tar -xvzf "${DATA_DIR}/30AX_MSAs.tar.gz" -C "${DATA_DIR}"
+git clone --depth 1 https://github.com/Stefano-Porrelli/Phylogenomic_pipeline.git temp_repo
+cp -r temp_repo/Datasets/* "${DATA_DIR}/"
+rm -rf temp_repo
 
 echo "Setup and data preparation completed."
