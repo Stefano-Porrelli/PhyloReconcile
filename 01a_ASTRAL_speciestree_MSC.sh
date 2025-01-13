@@ -12,7 +12,8 @@ CONCAT_TREE="${BASE_DIR}/02_phylogenies/01c_30AX_MLconcat"
 # Activate the Conda environment
 source activate Phylogenomic_pipeline
 
-# 1 - Generate ML gene trees in IQ-TREE 2
+# 1 - ASTRAL MSC ML Phylogeny
+# 1.1 - Generate ML gene trees in IQ-TREE 2
 mkdir -p "${GENE_TREES_DIR}"
 cd "${DATA_DIR}" || exit
 
@@ -25,7 +26,7 @@ for input_file in *.nexus; do
     fi
 done
 
-# 2 - Prepare input data files for ASTRAL
+# 1.2 - Prepare input data files for ASTRAL
 mkdir -p "${ASTRAL_DIR}"
 cp "${CONCAT_ALIGNMENT}" "${ASTRAL_DIR}/" || { echo "Error copying concatenated alignment"; exit 1; }
 
@@ -42,7 +43,7 @@ if [ ! -f "ml_best.trees" ] || [ ! -f "ml_boot.txt" ] || [ ! -f "${CONCAT_ALIGNM
     exit 1
 fi
 
-# 3 - Run ASTRAL to infer species tree topology and branch lengths (in coalescent units) from the ML gene trees
+# 1.3 - Run ASTRAL to infer species tree topology and branch lengths (in coalescent units) from the ML gene trees
 # bootstrap trees are used to quantify node support with multilocus bootstrapping
 astral -i ml_best.trees -b ml_boot.txt -r 1000 -o species_boot.trees || { echo "Error running ASTRAL"; exit 1; }
 # The output file "species_boot.trees" contains 1002 lines, 
@@ -51,7 +52,7 @@ astral -i ml_best.trees -b ml_boot.txt -r 1000 -o species_boot.trees || { echo "
 # the last line is the species tree generated from ML gene trees
 tail -n 1 species_boot.trees > 30AX_ASTRAL_ML_species.tree || { echo "Error creating species.tree"; exit 1; }
 
-# 4 - Generate gCF and sCF
+# 1.4 - Generate gCF and sCF
 iqtree2 -t 30AX_ASTRAL_ML_species.tree --gcf ml_best.trees -s "${CONCAT_ALIGNMENT}" --scf 100 --prefix 30AX_ASTRAL_ML_species_tree --cf-verbose --df-tree --cf-quartet || { echo "Error running IQ-TREE 2 for gCF and sCF"; exit 1; }
 
 # Determine quartet support (% of quartets in the gene trees that agree with the branch)
@@ -60,10 +61,11 @@ astral -i ml_best.trees -b ml_boot.txt -r 1000 -t 8 -o species_boot_t8.trees || 
 # Export branch annotations in tab delimited file
 astral -i ml_best.trees -b ml_boot.txt -r 1000 -t 16 -o species_boot_t16.trees || { echo "Error running ASTRAL with -t 16"; exit 1; }
 
-# 5 - Generate ML concatenated phylogeny IQ-TREE 2
+echo "ASTRAL species tree with bootstrap and Concordance values for node support generated."
+
+# 3 - Generate ML concatenated phylogeny IQ-TREE 2
 mkdir -p "${CONCAT_TREE}"
 cd "${CONCAT_TREE}" || exit
 iqtree2 -s "${CONCAT_ALIGNMENT}" -p "${PARTITION}" --prefix 30AX_ML_concatenation -B 1000 -T AUTO || { echo "Error running IQ-TREE 2 for ML concatenation"; exit 1; }
 
-echo "ASTRAL species tree with bootstrap and Concordance values for node support generated."
 echo "ML concatenation phylogeny generated."
