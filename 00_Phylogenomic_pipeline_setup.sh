@@ -3,7 +3,7 @@
 # Set base directory
 BASE_DIR="$(pwd)/Phylogenomic_pipeline"
 # Make directories and subdirectories
-mkdir -p "${BASE_DIR}" "${DATA_DIR}"  #TODO: remove datadir creation
+mkdir -p "${BASE_DIR}"
 mkdir -p \
   "${BASE_DIR}/02_phylogenies/01a_30AX_MLgenetrees" \
   "${BASE_DIR}/02_phylogenies/01b_30AX_ML_ASTRAL" \
