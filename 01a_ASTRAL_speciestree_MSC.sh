@@ -8,6 +8,7 @@ ASTRAL_DIR="${BASE_DIR}/02_phylogenies/01b_30AX_ASTRAL"
 CONCAT_ALIGNMENT="${DATA_DIR}/30AX_concatenated/30AX_concatenated.fasta"
 PARTITION="${DATA_DIR}/30AX_concatenated/30AX_partitions.txt"
 CONCAT_TREE="${BASE_DIR}/02_phylogenies/01c_30AX_MLconcat"
+MRBAYES_BLOCKS="${DATA_DIR}/30AX_MrBayes_blocks"
 
 # Activate the Conda environment
 source activate Phylogenomic_pipeline
