@@ -2,9 +2,6 @@
 
 # Set base directory
 BASE_DIR="$(pwd)/Phylogenomic_pipeline"
-DATA_DIR="${BASE_DIR}/01_initial_data"  #TODO: remove this, 01_initial_data will need to be downloaded from repository
-CONCAT_DIR="${DATA_DIR}/30AX_concatenated"
-
 # Make directories and subdirectories
 mkdir -p "${BASE_DIR}" "${DATA_DIR}"  #TODO: remove datadir creation
 mkdir -p \
@@ -15,7 +12,6 @@ mkdir -p \
   "${BASE_DIR}/02_phylogenies/01e_30AX_MLconcat" \
   "${BASE_DIR}/R_scripts" \
   "${BASE_DIR}/03_CF_DF_analysis/CF_plots"
-
 
 # Install Miniconda
 # (Instructions for installing Miniconda go here)
