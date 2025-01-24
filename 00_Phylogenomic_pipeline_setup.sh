@@ -22,6 +22,7 @@ dependencies:
   - python
   - iqtree
   - astral-tree
+  - mrbayes
   - amas
   - r-base
   - r-viridis
