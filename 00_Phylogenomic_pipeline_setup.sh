@@ -7,7 +7,15 @@ CONCAT_DIR="${DATA_DIR}/30AX_concatenated"
 
 # Make directories and subdirectories
 mkdir -p "${BASE_DIR}" "${DATA_DIR}"  #TODO: remove datadir creation
-mkdir -p "${BASE_DIR}/02_phylogenies/01a_30AX_MLgenetrees" "${BASE_DIR}/02_phylogenies/01b_30AX_ML_ASTRAL" "${BASE_DIR}/02_phylogenies/01c_30AX_BIgenetrees" "${BASE_DIR}/02_phylogenies/01d_30AX_BI_ASTRAL" "${BASE_DIR}/02_phylogenies/01e_30AX_MLconcat" "${BASE_DIR}/R_scripts" "${BASE_DIR}/03_CF_DF_analysis/CF_plots"
+mkdir -p \
+  "${BASE_DIR}/02_phylogenies/01a_30AX_MLgenetrees" \
+  "${BASE_DIR}/02_phylogenies/01b_30AX_ML_ASTRAL" \
+  "${BASE_DIR}/02_phylogenies/01c_30AX_BIgenetrees" \
+  "${BASE_DIR}/02_phylogenies/01d_30AX_BI_ASTRAL" \
+  "${BASE_DIR}/02_phylogenies/01e_30AX_MLconcat" \
+  "${BASE_DIR}/R_scripts" \
+  "${BASE_DIR}/03_CF_DF_analysis/CF_plots"
+
 
 # Install Miniconda
 # (Instructions for installing Miniconda go here)
