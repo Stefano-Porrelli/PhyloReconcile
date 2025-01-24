@@ -6,7 +6,7 @@ DATA_DIR="${BASE_DIR}/01_initial_data"  #TODO: remove this, 01_initial_data will
 CONCAT_DIR="${DATA_DIR}/30AX_concatenated"
 
 # Make directories and subdirectories
-mkdir -p "${BASE_DIR}" "${DATA_DIR}"
+mkdir -p "${BASE_DIR}" "${DATA_DIR}"  #TODO: remove datadir creation
 mkdir -p "${BASE_DIR}/02_phylogenies/01a_30AX_MLgenetrees" "${BASE_DIR}/02_phylogenies/01b_30AX_ASTRAL" "${BASE_DIR}/02_phylogenies/01c_30AX_MLconcat" "${BASE_DIR}/R_scripts" "${BASE_DIR}/03_CF_DF_analysis/CF_plots"
 
 # Install Miniconda
