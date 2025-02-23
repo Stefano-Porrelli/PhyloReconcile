@@ -1,4 +1,10 @@
 #!/bin/bash
+#------------------------------------------------------------------------------#
+#                             PhyloReconcile                                   #
+#                                                                              #
+#           Script_00 - Installation of environment and packages,              #
+#                   directories structure and data retrieval                   #
+#------------------------------------------------------------------------------#
 
 # Set base directory
 BASE_DIR="$(pwd)/Phylogenomic_pipeline"
@@ -39,7 +45,11 @@ EOF
 
 # Create a Conda environment and install required packages
 conda env create -f "${BASE_DIR}/environment.yml"
-source activate Phylogenomic_pipeline
+# Ensure Conda is initialized properly
+source "$(conda info --base)/etc/profile.d/conda.sh"
+# Activate the Conda environment
+conda activate Phylogenomic_pipeline
+
 
 # Install snp-sites, samtools, vcftools and bcftools,
 # needed for Dsuite analysis, comment next block if not needed
