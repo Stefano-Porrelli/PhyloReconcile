@@ -64,3 +64,24 @@ exe paup_block.txt
 # Map SuperTRI indices onto synthesis tree
 # Will generate a file with 2 trees mapped with MPP and Nrep
 python3 supertri.py --taxlist taxa.txt --datasets genes.txt --suffix .parts -o "${SUPERTRI_OUT}/MRP.nex" --root Panthera_leo_Ple1 --intree "${SUPERTRI_OUT}/synthesistree_boot.tre"
+
+# Extract tree with Nrep metrics from SuperTRI analyses
+awk '/tree repro/,/end;/' "${SUPERTRI_OUT}/synthesistree_boot.tre.withindices" | \
+    sed -e 's/tree repro =//g' -e 's/end;//g' > "${SUPERTRI_OUT}/Nreps.tree"
+
+# Extract tree with MPP metrics from SuperTRI analyses
+awk '/tree meansup/,/end;/' "${SUPERTRI_OUT}/synthesistree_boot.tre.withindices" | \
+    sed -e 's/tree meansup =//g' -e 's/end;//g' > "${SUPERTRI_OUT}/MPP.tree"
+
+# Root trees
+nw_reroot Nreps.tree Panthera_leo_Ple1 > Nreps_rooted.tree
+nw_reroot MPP.tree Panthera_leo_Ple1 > MPP_rooted.tree
+
+# Generate gCF/sCF for SuperTRI tree (which might differ from ML species tree)
+iqtree2 -t Nreps_rooted.tree --gcf "${DATA_DIR}/ml_best.trees" -s "${CONCAT_ALIGNMENT}" --scf 100 --prefix 30AX_Nreps_tree --cf-verbose --df-tree --cf-quartet
+iqtree2 -t MPP_rooted.tree --gcf "${DATA_DIR}/ml_best.trees" -s "${CONCAT_ALIGNMENT}" --scf 100 --prefix 30AX_MPP_tree --cf-verbose --df-tree --cf-quartet
+
+# Cleanup
+mkdir ./Result_trees
+mv ./*.tree ./Result_trees
+mv ./*.tre ./Result_trees
