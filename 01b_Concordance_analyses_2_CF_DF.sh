@@ -8,10 +8,21 @@ SUPERTRI_OUT="${CONCORDANCE_DIR}/SuperTRI"
 CF_DF_DIR="${CONCORDANCE_DIR}/CF_DF_analysis"
 CONCAT_ALIGNMENT="${BASE_DIR}/01_initial_data/30AX_MSAs/30AX_concatenated/30AX_concatenated.fasta"
 
+# Ensure Conda is initialized properly
+source "$(conda info --base)/etc/profile.d/conda.sh"
 # Activate the Conda environment
-source activate Phylogenomic_pipeline
+conda activate Phylogenomic_pipeline
 
 # Testing assumption of ILS using concordance factors (CF) and discordance factors (DF) values
+# Run CF/EF analyses 
+# prepare data
+mkdir -p "$CF_DF_DIR"
+mkdir -p ./CF_plots
+cd "$CF_DF_DIR"
+cp "${DATA_DIR}/30AX_ASTRAL_ML_species_tree.cf.stat" "${CF_DF_DIR}"
+cp "${SUPERTRI_OUT}/30AX_Nreps_tree.cf.stat" "${CF_DF_DIR}"
+cp "${SUPERTRI_OUT}/30AX_MPP_tree.cf.stat" "${CF_DF_DIR}"
+cp "${SUPERTRI_OUT}/30AX_Bootstrap_tree.cf.stat" "${CF_DF_DIR}"
 
 # Prepare R script for CF/DF analysis
 cat > "${BASE_DIR}/R_scripts/analyze_CF_DF.R" << EOF
