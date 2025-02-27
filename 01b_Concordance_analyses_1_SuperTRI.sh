@@ -88,6 +88,7 @@ nw_reroot Bootstrap.tree Panthera_leo_Ple1 > Bootstrap_rooted.tree
 # Generate gCF/sCF for SuperTRI tree (which might differ from ML species tree)
 iqtree2 -t Nreps_rooted.tree --gcf "${DATA_DIR}/ml_best.trees" -s "${CONCAT_ALIGNMENT}" --scf 100 --prefix 30AX_Nreps_tree --cf-verbose --df-tree --cf-quartet
 iqtree2 -t MPP_rooted.tree --gcf "${DATA_DIR}/ml_best.trees" -s "${CONCAT_ALIGNMENT}" --scf 100 --prefix 30AX_MPP_tree --cf-verbose --df-tree --cf-quartet
+iqtree2 -t Bootstrap_rooted.tree --gcf "${DATA_DIR}/ml_best.trees" -s "${CONCAT_ALIGNMENT}" --scf 100 --prefix 30AX_Bootstrap_tree --cf-verbose --df-tree --cf-quartet
 
 # Cleanup
 mkdir ./Result_trees
