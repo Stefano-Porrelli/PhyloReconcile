@@ -41,6 +41,7 @@ dependencies:
   - r-ggrepel
   - r-ggally
   - r-entropy
+  - r-patchwork
 EOF
 
 # Create a Conda environment and install required packages
