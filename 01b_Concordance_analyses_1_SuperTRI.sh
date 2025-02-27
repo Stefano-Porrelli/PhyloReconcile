@@ -75,6 +75,11 @@ awk '/tree repro/,/end;/' "${SUPERTRI_OUT}/synthesistree_boot.tre.withindices" |
 awk '/tree meansup/,/end;/' "${SUPERTRI_OUT}/synthesistree_boot.tre.withindices" | \
     sed -e 's/tree meansup =//g' -e 's/end;//g' > "${SUPERTRI_OUT}/MPP.tree"
 
+# Extract tree with Bootstrap metrics from SuperTRI analyses
+awk '/tree '\''PAUP_1'\'' = \[&U\]/,/End;/' synthesistree_boot.tre | \
+    sed -e 's/tree '\''PAUP_1'\'' = \[&U\]//g' -e 's/End;//g' | \
+    tr -d '\n' > Bootstrap.tree
+
 # Root trees
 nw_reroot Nreps.tree Panthera_leo_Ple1 > Nreps_rooted.tree
 nw_reroot MPP.tree Panthera_leo_Ple1 > MPP_rooted.tree
