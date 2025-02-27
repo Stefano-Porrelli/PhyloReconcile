@@ -11,6 +11,8 @@ BASE_DIR="$(pwd)/Phylogenomic_pipeline"
 CONCORDANCE_DIR="${BASE_DIR}/03_Concordance_analyses"
 SUPERTRI_OUT="${CONCORDANCE_DIR}/SuperTRI"
 SUPERTRI_IN="${BASE_DIR}/01_initial_data/Input_files/SuperTRI_input"
+DATA_DIR="${BASE_DIR}/02_phylogenies/01b_30AX_ML_ASTRAL"
+CONCAT_ALIGNMENT="${BASE_DIR}/01_initial_data/30AX_MSAs/30AX_concatenated/30AX_concatenated.fasta"
 
 # Ensure Conda is initialized properly
 source "$(conda info --base)/etc/profile.d/conda.sh"
