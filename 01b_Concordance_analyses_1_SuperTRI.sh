@@ -83,6 +83,7 @@ awk '/tree '\''PAUP_1'\'' = \[&U\]/,/End;/' synthesistree_boot.tre | \
 # Root trees
 nw_reroot Nreps.tree Panthera_leo_Ple1 > Nreps_rooted.tree
 nw_reroot MPP.tree Panthera_leo_Ple1 > MPP_rooted.tree
+nw_reroot Bootstrap.tree Panthera_leo_Ple1 > Bootstrap_rooted.tree
 
 # Generate gCF/sCF for SuperTRI tree (which might differ from ML species tree)
 iqtree2 -t Nreps_rooted.tree --gcf "${DATA_DIR}/ml_best.trees" -s "${CONCAT_ALIGNMENT}" --scf 100 --prefix 30AX_Nreps_tree --cf-verbose --df-tree --cf-quartet
