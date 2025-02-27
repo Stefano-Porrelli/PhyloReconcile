@@ -2,8 +2,11 @@
 
 # Set paths
 BASE_DIR="$(pwd)/Phylogenomic_pipeline"
-DATA_DIR="${BASE_DIR}/02_phylogenies/01b_30AX_ASTRAL"
-CF_DF_DIR="${BASE_DIR}/03_CF_DF_analysis"
+DATA_DIR="${BASE_DIR}/02_phylogenies/01b_30AX_ML_ASTRAL"
+CONCORDANCE_DIR="${BASE_DIR}/03_Concordance_analyses"
+SUPERTRI_OUT="${CONCORDANCE_DIR}/SuperTRI"
+CF_DF_DIR="${CONCORDANCE_DIR}/CF_DF_analysis"
+CONCAT_ALIGNMENT="${BASE_DIR}/01_initial_data/30AX_MSAs/30AX_concatenated/30AX_concatenated.fasta"
 
 # Activate the Conda environment
 source activate Phylogenomic_pipeline
