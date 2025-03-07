@@ -7,7 +7,7 @@
 #------------------------------------------------------------------------------#
 
 # Set paths
-BASE_DIR="$(pwd)/Phylogenomic_pipeline"
+BASE_DIR="$(pwd)/PhyloReconcile"
 CONCORDANCE_DIR="${BASE_DIR}/03_Concordance_analyses"
 SUPERTRI_OUT="${CONCORDANCE_DIR}/SuperTRI"
 SUPERTRI_IN="${BASE_DIR}/01_initial_data/Input_files/SuperTRI_input"
@@ -17,7 +17,7 @@ CONCAT_ALIGNMENT="${BASE_DIR}/01_initial_data/30AX_MSAs/30AX_concatenated/30AX_c
 # Ensure Conda is initialized properly
 source "$(conda info --base)/etc/profile.d/conda.sh"
 # Activate the Conda environment
-conda activate Phylogenomic_pipeline
+conda activate PhyloReconcile
 # Check the Python version (>3 is needed for SuperTRI_v60)
 PYTHON_VERSION=$(python -c 'import sys; print(sys.version_info[0])')
 if [[ "$PYTHON_VERSION" -ne 3 ]]; then
