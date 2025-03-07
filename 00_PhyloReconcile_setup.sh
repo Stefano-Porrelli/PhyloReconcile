@@ -7,7 +7,7 @@
 #------------------------------------------------------------------------------#
 
 # Set base directory
-BASE_DIR="$(pwd)/Phylogenomic_pipeline"
+BASE_DIR="$(pwd)/PhyloReconcile"
 # Make directories and subdirectories
 mkdir -p "${BASE_DIR}"
 mkdir -p \
@@ -24,7 +24,7 @@ mkdir -p \
 
 # Create a Conda environment file
 cat > "${BASE_DIR}/environment.yml" << EOF
-name: Phylogenomic_pipeline
+name: PhyloReconcile
 channels:
   - conda-forge
   - bioconda
@@ -49,7 +49,7 @@ conda env create -f "${BASE_DIR}/environment.yml"
 # Ensure Conda is initialized properly
 source "$(conda info --base)/etc/profile.d/conda.sh"
 # Activate the Conda environment
-conda activate Phylogenomic_pipeline
+conda activate PhyloReconcile
 
 
 # Install snp-sites, samtools, vcftools and bcftools,
@@ -61,7 +61,7 @@ conda install -y soil::bcftools
 conda install -y bioconda::newick_utils
 
 # Retrieve data
-git clone --depth 1 https://github.com/Stefano-Porrelli/Phylogenomic_pipeline.git temp_repo
+git clone --depth 1 https://github.com/Stefano-Porrelli/PhyloReconcile.git temp_repo
 cp -r temp_repo/Datasets/* "${DATA_DIR}/"
 rm -rf temp_repo
 
