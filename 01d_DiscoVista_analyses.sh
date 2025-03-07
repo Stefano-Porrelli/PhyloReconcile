@@ -2,7 +2,7 @@
 
 BASE_DIR="$(pwd)/Phylogenomic_pipeline"
 GENE_TREES_ML="${BASE_DIR}/02_phylogenies/01a_30AX_MLgenetrees"
-GENE_TREES_BI="${BASE_DIR}/01_initial_data/Input_files/BI_gene_trees_newick"																				
+GENE_TREES_BI="${BASE_DIR}/02_phylogenies/01c_30AX_BIgenetrees"																				
 ASTRAL_DIR="${BASE_DIR}/02_phylogenies/01b_30AX_ML_ASTRAL"
 DISCOVISTA_DIR="${BASE_DIR}/05_DiscoVista_analysis"
 PARAMETERS="${DISCOVISTA_DIR}/parameters"
