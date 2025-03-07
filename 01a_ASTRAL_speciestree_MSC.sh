@@ -1,7 +1,13 @@
 #!/bin/bash
+#------------------------------------------------------------------------------#
+#                             PhyloReconcile                                   #
+#                                                                              #
+#           Script_01a - Generation of gene trees and species tree under       #
+#                the multi-species coalescent (MSC) model in ASTRAL            #
+#------------------------------------------------------------------------------#
 
 # Set paths
-BASE_DIR="$(pwd)/Phylogenomic_pipeline"
+BASE_DIR="$(pwd)/PhyloReconcile"
 DATA_DIR="${BASE_DIR}/01_initial_data/30AX_MSAs"
 ML_GENE_TREES_DIR="${BASE_DIR}/02_phylogenies/01a_30AX_MLgenetrees"
 ML_ASTRAL_DIR="${BASE_DIR}/02_phylogenies/01b_30AX_ML_ASTRAL"
@@ -12,8 +18,10 @@ PARTITION="${DATA_DIR}/30AX_concatenated/30AX_partitions.txt"
 CONCAT_TREE="${BASE_DIR}/02_phylogenies/01e_30AX_MLconcat"
 MRBAYES_BLOCKS="${DATA_DIR}/30AX_MrBayes_blocks"
 
+# Ensure Conda is initialized properly
+source "$(conda info --base)/etc/profile.d/conda.sh"
 # Activate the Conda environment
-source activate Phylogenomic_pipeline
+conda activate PhyloReconcile
 
 # 1 - ASTRAL MSC ML Phylogeny
 # 1.1 - Generate ML gene trees in IQ-TREE 2
@@ -107,5 +115,3 @@ cd "${CONCAT_TREE}" || exit
 iqtree2 -s "${CONCAT_ALIGNMENT}" -p "${PARTITION}" --prefix 30AX_ML_concatenation -B 1000 -T AUTO || { echo "Error running IQ-TREE 2 for ML concatenation"; exit 1; }
 
 echo "ML concatenation phylogeny generated."
-
-
