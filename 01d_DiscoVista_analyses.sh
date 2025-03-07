@@ -99,7 +99,7 @@ cp "${ASTRAL_DIR}"/30AX_ASTRAL_ML_species.tree ./ASTRAL-ML/estimated_species_tre
 mkdir -p ./Concatenation-ML
 cp "${CONCAT_TREE}"/30AX_ML_concatenation.treefile ./Concatenation-ML/estimated_species_tree.tree
 mkdir -p ./SuperTRI-Boot
-cp 
+cp "${SUPERTRI_TREE}" ./SuperTRI-Boot/estimated_species_tree.tree
 
 
 # Copy and organize species and gene trees for Relative frequency analysis
