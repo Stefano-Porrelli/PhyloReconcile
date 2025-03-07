@@ -93,8 +93,9 @@ echo "All BI gene trees have been copied and organized into directories."
 cd "${DISCOVISTA_TREES}" || exit
 mkdir -p ./ASTRAL-ML
 cp "${ASTRAL_DIR}"/30AX_ASTRAL_ML_species.tree ./ASTRAL-ML/estimated_species_tree.tree
-# Copy and rename Concatenation and SuperTRI trees											# TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# TODO
+# Copy and rename Concatenation and SuperTRI trees											
+mkdir -p ./Concatenation-ML
+cp 
 
 # Copy and organize species and gene trees for Relative frequency analysis
 cd "${DISCOVISTA_DIR}" || exit
