@@ -2,8 +2,8 @@
 #------------------------------------------------------------------------------#
 #                             PhyloReconcile                                   #
 #                                                                              #
-#           Script_01a - Generation of gene trees and species tree under       #
-#                the multi-species coalescent (MSC) model in ASTRAL            #
+#       Script_01a - Generation of ML/BI gene trees and species tree under     #
+#               the multi-species coalescent (MSC) model in ASTRAL             #
 #------------------------------------------------------------------------------#
 
 # Set paths
