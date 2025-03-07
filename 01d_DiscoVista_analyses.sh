@@ -11,8 +11,10 @@ DISCOVISTA_GENES="${DISCOVISTA_DIR}/genetrees"
 DISCOVISTA_RESULTS="${DISCOVISTA_DIR}/results"
 DISCOVISTA_FREQ="${DISCOVISTA_DIR}/relativeFreq"
 
+# Ensure Conda is initialized properly
+source "$(conda info --base)/etc/profile.d/conda.sh"
 # Activate the Conda environment
-source activate Phylogenomic_pipeline
+conda activate Phylogenomic_pipeline
 # Create necessary directories
 mkdir -p "${DISCOVISTA_DIR}" "${PARAMETERS}" "${DISCOVISTA_TREES}" "${DISCOVISTA_RESULTS}"
 
