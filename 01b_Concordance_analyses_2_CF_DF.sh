@@ -7,7 +7,7 @@
 #------------------------------------------------------------------------------#
 
 # Set paths
-BASE_DIR="$(pwd)/Phylogenomic_pipeline"
+BASE_DIR="$(pwd)/PhyloReconcile"
 DATA_DIR="${BASE_DIR}/02_phylogenies/01b_30AX_ML_ASTRAL"
 CONCORDANCE_DIR="${BASE_DIR}/03_Concordance_analyses"
 SUPERTRI_OUT="${CONCORDANCE_DIR}/SuperTRI"
@@ -17,7 +17,7 @@ CONCAT_ALIGNMENT="${BASE_DIR}/01_initial_data/30AX_MSAs/30AX_concatenated/30AX_c
 # Ensure Conda is initialized properly
 source "$(conda info --base)/etc/profile.d/conda.sh"
 # Activate the Conda environment
-conda activate Phylogenomic_pipeline
+conda activate PhyloReconcile
 
 # Testing assumption of ILS using concordance factors (CF) and discordance factors (DF) values
 # Run CF/EF analyses 
@@ -31,7 +31,7 @@ cp "${SUPERTRI_OUT}/30AX_MPP_tree.cf.stat" "${CF_DF_DIR}"
 cp "${SUPERTRI_OUT}/30AX_Bootstrap_tree.cf.stat" "${CF_DF_DIR}"
 
 # Prepare R script for CF/DF analysis
-cat > "${BASE_DIR}/R_scripts/analyze_CF_DF.R" << EOF
+cat > "${CF_DF_DIR}/analyze_CF_DF.R" << EOF
 library(viridis)
 library(ggplot2)
 library(dplyr)
@@ -40,7 +40,7 @@ library(entropy)
 library(patchwork)
 
 # Read the data
-d <- read.delim("${DATA_DIR}/30AX_ASTRAL_ML_species_tree.cf.stat", header = TRUE, comment.char='#')
+d <- read.delim("${CF_DF_DIR}/30AX_ASTRAL_ML_species_tree.cf.stat", header = TRUE, comment.char='#')
 names(d)[20] <- "bootstrap"
 names(d)[21] <- "branchlength"
 d <- d[-1, ]
@@ -174,7 +174,7 @@ write.table(f, file = "${CF_DF_DIR}/significant_EF_p_values.txt", sep = "\t", qu
 EOF
 
 # Run R script
-Rscript "${BASE_DIR}/R_scripts/analyze_CF_DF.R"
+Rscript "${CF_DF_DIR}/analyze_CF_DF.R"
 
 echo "Analysis of Concordance and Discordance Factors (CF/DF) completed."
 
