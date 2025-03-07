@@ -1,6 +1,12 @@
 #!/bin/bash
+#------------------------------------------------------------------------------#
+#                             PhyloReconcile                                   #
+#                                                                              #
+#     Script_01d - Visualization of gene tree and species tree discordance     #
+#                             with DiscoVista                                  #
+#------------------------------------------------------------------------------#
 
-BASE_DIR="$(pwd)/Phylogenomic_pipeline"
+BASE_DIR="$(pwd)/PhyloReconcile"
 GENE_TREES_ML="${BASE_DIR}/02_phylogenies/01a_30AX_MLgenetrees"
 GENE_TREES_BI="${BASE_DIR}/02_phylogenies/01c_30AX_BIgenetrees"																				
 ASTRAL_DIR="${BASE_DIR}/02_phylogenies/01b_30AX_ML_ASTRAL"
@@ -16,7 +22,7 @@ DISCOVISTA_FREQ="${DISCOVISTA_DIR}/relativeFreq"
 # Ensure Conda is initialized properly
 source "$(conda info --base)/etc/profile.d/conda.sh"
 # Activate the Conda environment
-conda activate Phylogenomic_pipeline
+conda activate PhyloReconcile
 # Create necessary directories
 mkdir -p "${DISCOVISTA_DIR}" "${PARAMETERS}" "${DISCOVISTA_TREES}" "${DISCOVISTA_RESULTS}"
 
