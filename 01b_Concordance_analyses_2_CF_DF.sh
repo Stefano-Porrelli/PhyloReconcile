@@ -1,4 +1,10 @@
 #!/bin/bash
+#------------------------------------------------------------------------------#
+#                             PhyloReconcile                                   #
+#                                                                              #
+#                   Script_01b - Concordance Analysis 2                        #
+#              Analysis of concordance and discordance factors                 #
+#------------------------------------------------------------------------------#
 
 # Set paths
 BASE_DIR="$(pwd)/Phylogenomic_pipeline"
