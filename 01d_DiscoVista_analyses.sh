@@ -4,6 +4,8 @@ BASE_DIR="$(pwd)/Phylogenomic_pipeline"
 GENE_TREES_ML="${BASE_DIR}/02_phylogenies/01a_30AX_MLgenetrees"
 GENE_TREES_BI="${BASE_DIR}/02_phylogenies/01c_30AX_BIgenetrees"																				
 ASTRAL_DIR="${BASE_DIR}/02_phylogenies/01b_30AX_ML_ASTRAL"
+CONCAT_TREE="${BASE_DIR}/02_phylogenies/01e_30AX_MLconcat"
+SUPERTRI_TREE="${BASE_DIR}/01_initial_data/Input_files/SuperTRI_input/SuperTRI_out_TREES/Bootstrap_rooted.tree"
 DISCOVISTA_DIR="${BASE_DIR}/05_DiscoVista_analysis"
 PARAMETERS="${DISCOVISTA_DIR}/parameters"
 DISCOVISTA_TREES="${DISCOVISTA_DIR}/species"
@@ -95,7 +97,10 @@ mkdir -p ./ASTRAL-ML
 cp "${ASTRAL_DIR}"/30AX_ASTRAL_ML_species.tree ./ASTRAL-ML/estimated_species_tree.tree
 # Copy and rename Concatenation and SuperTRI trees											
 mkdir -p ./Concatenation-ML
+cp "${CONCAT_TREE}"/30AX_ML_concatenation.treefile ./Concatenation-ML/estimated_species_tree.tree
+mkdir -p ./SuperTRI-Boot
 cp 
+
 
 # Copy and organize species and gene trees for Relative frequency analysis
 cd "${DISCOVISTA_DIR}" || exit
