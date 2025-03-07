@@ -61,11 +61,21 @@ done
 echo "All trees have been copied, organized into directories, and temporary files cleaned up."
 
 # Copy and organize BI gene trees to DISCOVISTA_GENES for gene tree analyses
-cp "${GENE_TREES_BI}"/*.con.tre "${DISCOVISTA_GENES}"											
+cd "${GENE_TREES_BI}" || exit
+# Use AfterPhylo to convert to newick format
+curl -O https://raw.githubusercontent.com/qiyunzhu/AfterPhylo/master/AfterPhylo.pl
+chmod +x AfterPhylo.pl
+# Convert to newick
+for treefile in *.con.tre; do
+    perl AfterPhylo.pl -confonly -format=newick "$treefile"
+done
+
+# Copy trees
+cp "${GENE_TREES_BI}"/*.con.out.tre "${DISCOVISTA_GENES}"											
 cd "${DISCOVISTA_GENES}" || exit
-for treefile in "${DISCOVISTA_GENES}"/*.con.tre; do
-    # Extract the base name of the file (without .con.tre extension)
-    basename=$(basename "$treefile" .con.tre)
+for treefile in "${DISCOVISTA_GENES}"/*.con.out.tre; do
+    # Extract the base name of the file (without .con.out.tre extension)
+    basename=$(basename "$treefile" .con.out.tre)
     # Extract the gene name 
     gene_name=$(echo "$basename" | cut -d'_' -f2 | cut -d'.' -f1)
     # Create the parent directory for the gene
