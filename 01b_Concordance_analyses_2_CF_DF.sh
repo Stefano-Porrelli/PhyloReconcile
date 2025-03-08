@@ -23,8 +23,8 @@ conda activate PhyloReconcile
 # Run CF/EF analyses 
 # prepare data
 mkdir -p "$CF_DF_DIR"
-mkdir -p ./CF_plots
 cd "$CF_DF_DIR"
+mkdir -p ./CF_plots
 cp "${DATA_DIR}/30AX_ASTRAL_ML_species_tree.cf.stat" "${CF_DF_DIR}"
 cp "${SUPERTRI_OUT}/30AX_Nreps_tree.cf.stat" "${CF_DF_DIR}"
 cp "${SUPERTRI_OUT}/30AX_MPP_tree.cf.stat" "${CF_DF_DIR}"
