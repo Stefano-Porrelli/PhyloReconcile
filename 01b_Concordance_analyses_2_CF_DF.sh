@@ -28,7 +28,7 @@ mkdir -p ./CF_plots
 cp "${DATA_DIR}/30AX_ASTRAL_ML_species_tree.cf.stat" "${CF_DF_DIR}"
 cp "${SUPERTRI_OUT}/30AX_Nreps_tree.cf.stat" "${CF_DF_DIR}"
 cp "${SUPERTRI_OUT}/30AX_MPP_tree.cf.stat" "${CF_DF_DIR}"
-cp "${SUPERTRI_OUT}/30AX_Bootstrap_tree.cf.stat" "${CF_DF_DIR}"
+cp "${SUPERTRI_OUT}/30AX_SBP_tree.cf.stat" "${CF_DF_DIR}"
 
 # Prepare R script for CF/DF analysis
 cat > "${CF_DF_DIR}/analyze_CF_DF.R" << EOF
