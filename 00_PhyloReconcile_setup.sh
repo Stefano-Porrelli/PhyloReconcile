@@ -19,8 +19,13 @@ mkdir -p \
   "${BASE_DIR}/R_scripts" \
   "${BASE_DIR}/03_Concordance_analyses/Concordance_factors"
 
-# Install Miniconda
-# (Instructions for installing Miniconda go here)
+# Install Miniconda: uncomment next block for installation
+# mkdir -p ~/miniconda3
+# curl https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh -o ~/miniconda3/miniconda.sh
+# bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+# rm ~/miniconda3/miniconda.sh
+# source ~/miniconda3/bin/activate
+# conda init --all
 
 # Create a Conda environment file
 cat > "${BASE_DIR}/environment.yml" << EOF
@@ -50,7 +55,6 @@ conda env create -f "${BASE_DIR}/environment.yml"
 source "$(conda info --base)/etc/profile.d/conda.sh"
 # Activate the Conda environment
 conda activate PhyloReconcile
-
 
 # Install snp-sites, samtools, vcftools and bcftools,
 # needed for Dsuite analysis, comment next block if not needed
