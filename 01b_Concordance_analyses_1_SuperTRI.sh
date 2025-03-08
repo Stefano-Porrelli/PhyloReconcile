@@ -55,12 +55,14 @@ cp "${SUPERTRI_IN}"/*.abs "${SUPERTRI_OUT}"    # Files with names of missing tax
 cp "${SUPERTRI_IN}/taxa.txt" "${SUPERTRI_OUT}"  # List of taxon names, in the same order as in the matrix used
 cp "${SUPERTRI_IN}/genes.txt" "${SUPERTRI_OUT}" # List of marker names (prefixes)
 cp "${SUPERTRI_IN}/paup_block.txt" "${SUPERTRI_OUT}" # PAUP block 
+cp "${SUPERTRI_IN}/paup_block_bootstraplabs.txt" "${SUPERTRI_OUT}" # PAUP block for SBP bootstrap labels 
 
 # Run SuperTRI 
 python3 supertri.py --taxlist taxa.txt --datasets genes.txt --suffix .parts -o MRP.nex --root Panthera_leo_Ple1
 
 # Run PAUP and generate synthesis tree with SBP support
 ./paup4a168_osx -n paup_block.txt
+./paup4a168_osx -n paup_block_bootstraplabs.txt
 
 # Map SuperTRI indices onto synthesis tree
 # Will generate a file with 2 trees mapped with MPP and Nrep
@@ -73,23 +75,24 @@ awk '/tree repro/,/end;/' "${SUPERTRI_OUT}/synthesistree_boot.tre.withindices" |
 # Extract tree with MPP metrics from SuperTRI analyses
 awk '/tree meansup/,/end;/' "${SUPERTRI_OUT}/synthesistree_boot.tre.withindices" | \
     sed -e 's/tree meansup =//g' -e 's/end;//g' > "${SUPERTRI_OUT}/MPP.tree"
-
+    
 # Extract tree with Bootstrap metrics from SuperTRI analyses
-awk '/tree '\''PAUP_1'\'' = \[&U\]/,/End;/' synthesistree_boot.tre | \
+awk '/tree '\''PAUP_1'\'' = \[&U\]/,/End;/' synthesistree_boot_labels.tre | \
     sed -e 's/tree '\''PAUP_1'\'' = \[&U\]//g' -e 's/End;//g' | \
-    tr -d '\n' > Bootstrap.tree
+    tr -d '\n' > SBP.tree
 
 # Root trees
 nw_reroot Nreps.tree Panthera_leo_Ple1 > Nreps_rooted.tree
 nw_reroot MPP.tree Panthera_leo_Ple1 > MPP_rooted.tree
-nw_reroot Bootstrap.tree Panthera_leo_Ple1 > Bootstrap_rooted.tree
+nw_reroot SBP.tree Panthera_leo_Ple1 > SBP_rooted.tree
 
 # Generate gCF/sCF for SuperTRI tree (which might differ from ML species tree)
+iqtree2 -t SBP_rooted.tree --gcf "${DATA_DIR}/ml_best.trees" -s "${CONCAT_ALIGNMENT}" --scf 100 --prefix 30AX_SBP_tree --cf-verbose --df-tree --cf-quartet
 iqtree2 -t Nreps_rooted.tree --gcf "${DATA_DIR}/ml_best.trees" -s "${CONCAT_ALIGNMENT}" --scf 100 --prefix 30AX_Nreps_tree --cf-verbose --df-tree --cf-quartet
 iqtree2 -t MPP_rooted.tree --gcf "${DATA_DIR}/ml_best.trees" -s "${CONCAT_ALIGNMENT}" --scf 100 --prefix 30AX_MPP_tree --cf-verbose --df-tree --cf-quartet
-iqtree2 -t Bootstrap_rooted.tree --gcf "${DATA_DIR}/ml_best.trees" -s "${CONCAT_ALIGNMENT}" --scf 100 --prefix 30AX_Bootstrap_tree --cf-verbose --df-tree --cf-quartet
 
 # Cleanup
 mkdir ./Result_trees
 mv ./*.tree ./Result_trees
-mv ./*.tre ./Result_trees
+
+echo "SuperTRI analysis completed"
