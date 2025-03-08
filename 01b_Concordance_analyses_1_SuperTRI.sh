@@ -60,8 +60,7 @@ cp "${SUPERTRI_IN}/paup_block.txt" "${SUPERTRI_OUT}" # PAUP block
 python3 supertri.py --taxlist taxa.txt --datasets genes.txt --suffix .parts -o MRP.nex --root Panthera_leo_Ple1
 
 # Run PAUP and generate synthesis tree with SBP support
-./paup4a168_osx
-exe paup_block.txt
+./paup4a168_osx -n paup_block.txt
 
 # Map SuperTRI indices onto synthesis tree
 # Will generate a file with 2 trees mapped with MPP and Nrep
