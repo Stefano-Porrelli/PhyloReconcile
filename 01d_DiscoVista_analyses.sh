@@ -70,13 +70,13 @@ echo "All trees have been copied, organized into directories, and temporary file
 
 # Copy and organize BI gene trees to DISCOVISTA_GENES for gene tree analyses
 cd "${GENE_TREES_BI}" || exit
-# Use AfterPhylo to convert to newick format
-curl -O https://raw.githubusercontent.com/qiyunzhu/AfterPhylo/master/AfterPhylo.pl
-chmod +x AfterPhylo.pl
+# Use AfterPhylo to convert to newick format (uncomment next block if not done already)
+# curl -O https://raw.githubusercontent.com/qiyunzhu/AfterPhylo/master/AfterPhylo.pl
+# chmod +x AfterPhylo.pl
 # Convert to newick
-for treefile in *.con.tre; do
-    perl AfterPhylo.pl -confonly -format=newick "$treefile"
-done
+# for treefile in *.con.tre; do
+    # perl AfterPhylo.pl -confonly -format=newick "$treefile"
+# done
 
 # Copy trees
 cp "${GENE_TREES_BI}"/*.con.out.tre "${DISCOVISTA_GENES}"											
