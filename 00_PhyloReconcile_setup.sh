@@ -16,7 +16,6 @@ mkdir -p \
   "${BASE_DIR}/02_phylogenies/01c_30AX_BIgenetrees" \
   "${BASE_DIR}/02_phylogenies/01d_30AX_BI_ASTRAL" \
   "${BASE_DIR}/02_phylogenies/01e_30AX_MLconcat" \
-  "${BASE_DIR}/R_scripts" \
   "${BASE_DIR}/03_Concordance_analyses/Concordance_factors"
 
 # Install Miniconda: uncomment next block for installation
