@@ -2,22 +2,23 @@
 #------------------------------------------------------------------------------#
 #                             PhyloReconcile                                   #
 #                                                                              #
-#     Script_01d - Visualization of gene tree and species tree discordance     #
+#     Script_01c - Visualization of gene tree and species tree discordance     #
 #                             with DiscoVista                                  #
 #------------------------------------------------------------------------------#
 
 BASE_DIR="$(pwd)/PhyloReconcile"
 GENE_TREES_ML="${BASE_DIR}/02_phylogenies/01a_30AX_MLgenetrees"
-GENE_TREES_BI="${BASE_DIR}/02_phylogenies/01c_30AX_BIgenetrees"																				
+GENE_TREES_BI="${BASE_DIR}/02_phylogenies/01c_30AX_BIgenetrees"
 ASTRAL_DIR="${BASE_DIR}/02_phylogenies/01b_30AX_ML_ASTRAL"
 CONCAT_TREE="${BASE_DIR}/02_phylogenies/01e_30AX_MLconcat"
 SUPERTRI_TREE="${BASE_DIR}/03_Concordance_analyses/SuperTRI/Result_trees/SBP_rooted.tree"
-DISCOVISTA_DIR="${BASE_DIR}/05_DiscoVista_analysis"
+DISCOVISTA_DIR="${BASE_DIR}/04_DiscoVista_analysis"
 PARAMETERS="${DISCOVISTA_DIR}/parameters"
 DISCOVISTA_TREES="${DISCOVISTA_DIR}/species"
 DISCOVISTA_GENES="${DISCOVISTA_DIR}/genetrees"
 DISCOVISTA_RESULTS="${DISCOVISTA_DIR}/results"
 DISCOVISTA_FREQ="${DISCOVISTA_DIR}/relativeFreq"
+DISCOVISTA_INPUTS="${BASE_DIR}/01_initial_data/Input_files/DiscoVista_parameters"
 
 # Ensure Conda is initialized properly
 source "$(conda info --base)/etc/profile.d/conda.sh"
@@ -79,7 +80,7 @@ cd "${GENE_TREES_BI}" || exit
 # done
 
 # Copy trees
-cp "${GENE_TREES_BI}"/*.con.out.tre "${DISCOVISTA_GENES}"											
+cp "${GENE_TREES_BI}"/*.con.out.tre "${DISCOVISTA_GENES}"
 cd "${DISCOVISTA_GENES}" || exit
 for treefile in "${DISCOVISTA_GENES}"/*.con.out.tre; do
     # Extract the base name of the file (without .con.out.tre extension)
@@ -101,7 +102,7 @@ echo "All BI gene trees have been copied and organized into directories."
 cd "${DISCOVISTA_TREES}" || exit
 mkdir -p ./ASTRAL-ML
 cp "${ASTRAL_DIR}"/30AX_ASTRAL_ML_species.tree ./ASTRAL-ML/estimated_species_tree.tree
-# Copy and rename Concatenation and SuperTRI trees											
+# Copy and rename Concatenation and SuperTRI trees
 mkdir -p ./Concatenation-ML
 cp "${CONCAT_TREE}"/30AX_ML_concatenation.treefile ./Concatenation-ML/estimated_species_tree.tree
 mkdir -p ./SuperTRI-Boot
@@ -126,16 +127,19 @@ docker pull esayyari/discovista
 # create results directory
 cd "${DISCOVISTA_DIR}" || exit
 mkdir -p "${DISCOVISTA_RESULTS}"/speciesTree_family_subfamily
+cp "${DISCOVISTA_INPUTS}"/*.txt "${PARAMETERS}"
 # generate clade-defs file for Family/subfamily level (annotation1)
 # docker run -v "${DISCOVISTA_DIR}":/data esayyari/discovista generate_clade-defs.py parameters/annotation1_FamSubfam.txt parameters/clade-defs1_FamSubfam.txt
 # run DiscoVista
 docker run -v "${DISCOVISTA_DIR}":/data esayyari/discovista discoVista.py -c parameters/clade-defs1_FamSubfam.txt -p species/ -t 95 -y parameters/newModel.txt -w parameters/newOrders1_FamSubfam.txt -m 0 -o results/speciesTree_family_subfamily
 echo "DiscoVista analysis completed. Results are in ${DISCOVISTA_RESULTS}/speciesTree_family_subfamily"
+
 # 1.2 - Discordance analysis on gene trees - Family/Subfamily
 # Show the proportion of gene trees for which clades are supported/rejected
 mkdir -p "${DISCOVISTA_RESULTS}"/genetrees_family_subfamily
 docker run -v "${DISCOVISTA_DIR}":/data esayyari/discovista discoVista.py -c parameters/clade-defs1_FamSubfam.txt -p genetrees/ -t 95 -w parameters/newOrders1_FamSubfam.txt -m 1 -o results/genetrees_family_subfamily
 echo "DiscoVista analysis completed. Results are in ${DISCOVISTA_RESULTS}/genetrees_family_subfamily"
+
 # 1.3 - Relative frequencies analysis - Family/Subfamily
 # determine frequency of all three topologies around focal branches of the infered species trees
 mkdir -p "${DISCOVISTA_RESULTS}"/relativeFreq/Family_subfamily
@@ -203,4 +207,4 @@ docker run -v "${DISCOVISTA_DIR}":/data esayyari/discovista discoVista.py -a par
 mkdir -p "${DISCOVISTA_RESULTS}"/relativeFreq/ann_Bovina
 docker run -v "${DISCOVISTA_DIR}":/data esayyari/discovista discoVista.py -a parameters/annotation_Bovina.txt -m 5 -p relativeFreq/ASTRAL_30genes-ML -o results/relativeFreq/ann_Bovina -g Outgroup
 
-
+echo "DiscoVista relative frequency analysis completed."
