@@ -56,7 +56,7 @@ source "$(conda info --base)/etc/profile.d/conda.sh"
 conda activate PhyloReconcile
 
 # Install snp-sites, samtools, vcftools and bcftools,
-# newick_utils, and numpy
+# newick_utils, numpy, pandas, matplotlib
 conda install -y bioconda::snp-sites
 conda install -y bioconda::samtools
 conda install -y bioconda::vcftools
@@ -64,6 +64,7 @@ conda install -y soil::bcftools
 conda install -y bioconda::newick_utils
 conda install -y conda-forge::numpy
 conda install -y conda-forge::pandas
+conda install -y conda-forge::matplotlib
 
 # Retrieve data
 git clone --depth 1 https://github.com/Stefano-Porrelli/PhyloReconcile.git temp_repo
