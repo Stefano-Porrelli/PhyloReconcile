@@ -63,6 +63,7 @@ conda install -y bioconda::vcftools
 conda install -y soil::bcftools
 conda install -y bioconda::newick_utils
 conda install -y conda-forge::numpy
+conda install -y conda-forge::pandas
 
 # Retrieve data
 git clone --depth 1 https://github.com/Stefano-Porrelli/PhyloReconcile.git temp_repo
