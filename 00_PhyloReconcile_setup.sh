@@ -56,12 +56,13 @@ source "$(conda info --base)/etc/profile.d/conda.sh"
 conda activate PhyloReconcile
 
 # Install snp-sites, samtools, vcftools and bcftools,
-# needed for Dsuite analysis, comment next block if not needed
+# newick_utils, and numpy
 conda install -y bioconda::snp-sites
 conda install -y bioconda::samtools
 conda install -y bioconda::vcftools
 conda install -y soil::bcftools
 conda install -y bioconda::newick_utils
+conda install -y conda-forge::numpy
 
 # Retrieve data
 git clone --depth 1 https://github.com/Stefano-Porrelli/PhyloReconcile.git temp_repo
