@@ -2,7 +2,7 @@
 #------------------------------------------------------------------------------#
 #                             PhyloReconcile                                   #
 #                                                                              #
-#          Script_022 - 2. Generation of MSY Phylogeny (AMELY/DDX3Y)           #
+#          Script_02a - 2. Generation of MSY Phylogeny (AMELY/DDX3Y)           #
 #                                                                              #
 #------------------------------------------------------------------------------#
 
