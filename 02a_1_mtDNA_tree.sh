@@ -2,8 +2,8 @@
 #------------------------------------------------------------------------------#
 #                             PhyloReconcile                                   #
 #                                                                              #
-#               Script_02a - Generation of Mitochondrial Phylogeny             #
-#                                IqTree2                                       #
+#               Script_02a - 1. Generation of Mitochondrial Phylogeny          #
+#                                                                              #
 #------------------------------------------------------------------------------#
 
 # Set paths
