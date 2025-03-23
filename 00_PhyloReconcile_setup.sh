@@ -46,6 +46,8 @@ dependencies:
   - r-ggally
   - r-entropy
   - r-patchwork
+  - r-ape
+  - r-phytools
 EOF
 
 # Create a Conda environment and install required packages
