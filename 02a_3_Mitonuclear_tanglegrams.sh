@@ -220,15 +220,6 @@ EOF
 Rscript 03_MitoNuclearMSY_tanglegram.R
 echo "Analysis complete. Output saved to ${RES_DIR}/mtDNA_msyDNA_comparison.pdf"
 
-
-
-
-
-
-
-
-
-
 # 4. Compare MSY and nuDNA phylogenies with Cophylo
 # Create a separate R script
 cat > 04_MSYDNA_nuDNA_tanglegram.R << 'EOF'
