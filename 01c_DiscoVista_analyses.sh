@@ -2,7 +2,7 @@
 #------------------------------------------------------------------------------#
 #                             PhyloReconcile                                   #
 #                                                                              #
-#     Script_01c - Visualization of gene tree and species tree discordance     #
+#     Script_01c - 2. Visualization of gene tree and species tree discordance  #
 #                             with DiscoVista                                  #
 #------------------------------------------------------------------------------#
 
