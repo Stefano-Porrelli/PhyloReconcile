@@ -49,7 +49,7 @@ cd "${MSY_PHYLO}"
 iqtree2 -s 33_MSY_MSA.nexus -p MSY_partitions.txt --prefix MSY_concatenation -B 1000 --wbt -nt AUTO
 # Generate individual loci trees
 iqtree2 -s 33_MSY_MSA.nexus -S MSY_partitions.txt -B 1000 --wbt --prefix Yloci -nt AUTO
-# compute gCF and sCF for the concatenated ML mitochondrial tree
+# compute gCF and sCF for the concatenated ML MSY tree
 iqtree2 -t MSY_concatenation.treefile --gcf Yloci.treefile -s 33_MSY_MSA.nexus --scf 100 --prefix MSY_concat_concord --cf-verbose --df-tree --cf-quartet
 
 # ASTRAL: Multispecies coalescent model (MSC)
