@@ -145,7 +145,7 @@ The PhyloReconcile pipeline consists of a series of scripts that should be execu
 - `01d_Dsuite_analyses.sh`: Performs analysis of introgression with Dsuite
 - `02a_1_mtDNA_tree.sh`: Generates mitochondrial phylogeny
 - `02a_2_MSY_tree.sh`: Validates authenticity of Y chromosome sequences and generates Y chromosome phylogeny
-- `02a_3_Mitonucleat_tanglegrams.sh`: Assess and visualize topological discordances between phylogenies generated from markers of different inheritance mode (biparental, maternal and paternal)
+- `02a_3_Mitonuclear_tanglegrams.sh`: Assess and visualize topological discordances between phylogenies generated from markers of different inheritance mode (biparental, maternal and paternal)
 
 ### 4.1 Script `00_PhyloReconcile_setup.sh`
 This script sets up the environment and software required for the pipeline. It creates the necessary directory structure, installs required software through Conda, and prepares the environment for subsequent analyses.
