@@ -26,7 +26,7 @@ BASE_DIR <- file.path(getwd(), "PhyloReconcile")
 NUDNA_PHYLO <- file.path(BASE_DIR, "02_phylogenies", "01b_30AX_ML_ASTRAL", "30AX_ASTRAL_ML_species.tree")
 GENETREES_NUDNA <- file.path(BASE_DIR, "02_phylogenies", "01b_30AX_ML_ASTRAL", "ml_best.trees")
 INPUTS <- file.path(BASE_DIR, "01_initial_data", "input_files", "SNaQ_NANUQ")
-MSC_RESULTS <- file.path(BASE_DIR, "08_Network_Analyses")
+MSC_RESULTS <- file.path(BASE_DIR, "09_Network_Analyses")
 
 # 4. Create results directory based on group name
 group_dir <- file.path(MSC_RESULTS, group)
