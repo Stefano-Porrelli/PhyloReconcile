@@ -24,7 +24,7 @@ GENETREES_MTDNA <- file.path(BASE_DIR, "02_phylogenies", "02a_mtDNA_phylogeny", 
 
 
 INPUTS <- file.path(BASE_DIR, "01_initial_data", "input_files", "SNaQ_NANUQ")
-MSC_RESULTS <- file.path(BASE_DIR, "08_Network_Analyses")
+MSC_RESULTS <- file.path(BASE_DIR, "09_Network_Analyses")
 
 # 4. Create/navigate to results directory based on group name
 group_dir <- file.path(MSC_RESULTS, group)
