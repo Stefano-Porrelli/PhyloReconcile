@@ -23,7 +23,7 @@ out = " "  # outgroup
 
 # 4. Setup directory structure
 BASE_DIR = joinpath(pwd(), "PhyloReconcile")
-MSC_RESULTS = joinpath(BASE_DIR, "08_Network_Analyses")
+MSC_RESULTS = joinpath(BASE_DIR, "09_Network_Analyses")
 group_dir = joinpath(MSC_RESULTS, group)
 
 # 5. Define input and output file paths
