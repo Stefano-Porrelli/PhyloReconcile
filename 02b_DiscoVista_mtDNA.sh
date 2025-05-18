@@ -19,21 +19,20 @@ DISCOVISTA_FREQ="${DISCOVISTA_DIR}/relativeFreq"
 DISCOVISTA_INPUTS_TRIBE="${BASE_DIR}/01_initial_data/Input_files/DiscoVista_parameters_mtDNA/annotation_mtDNA_tribe.txt"
 DISCOVISTA_INPUTS_FAMILY="${BASE_DIR}/01_initial_data/Input_files/DiscoVista_parameters_mtDNA/annotation_mtDNA_family.txt"
 DISCOVISTA_INPUTS_SPECIES="${BASE_DIR}/01_initial_data/Input_files/DiscoVista_parameters_mtDNA/annotation_mtDNA_species.txt"
-DISCOVISTA_FREQ="${DISCOVISTA_DIR}/relativeFreq"
 DISCOVISTA_INPUTS_TRIBE_MONOPHYLY="${BASE_DIR}/01_initial_data/Input_files/DiscoVista_parameters_mtDNA/annotation_mtDNA_tribe_monophyly.txt"
+DISCOVISTA_INPUTS_DISC_1="${BASE_DIR}/01_initial_data/Input_files/DiscoVista_parameters_mtDNA/annotation_mtDNA_discordance_1.txt"
+DISCOVISTA_INPUTS_DISC_2="${BASE_DIR}/01_initial_data/Input_files/DiscoVista_parameters_mtDNA/annotation_mtDNA_discordance_2.txt"
+
 
 # Ensure Conda is initialized properly
 source "$(conda info --base)/etc/profile.d/conda.sh"
-
 # Activate the Conda environment
 conda activate PhyloReconcile
 
 # Create necessary directories
 mkdir -p "${DISCOVISTA_DIR}" "${PARAMETERS}" "${DISCOVISTA_TREES}" "${DISCOVISTA_RESULTS}"
-
 # Create directory for individual tree files
 mkdir -p "${DISCOVISTA_GENES}"
-
 # Process the single MtDNA_loci.treefile file containing multiple trees
 counter=1
 while IFS= read -r line
@@ -42,34 +41,13 @@ do
     if [[ -n "$line" ]]; then
         # Create the parent directory structure
         mkdir -p "${DISCOVISTA_GENES}/${counter}/${counter}-ML"
-        
         # Write the tree line to a new file
         echo "$line" > "${DISCOVISTA_GENES}/${counter}/${counter}-ML/estimated_gene_trees.tree"
-        
         echo "Created tree file ${counter}"
         ((counter++))
     fi
 done < "${GENE_TREES_ML}"
 echo "All trees have been extracted and organized into numbered directories."
-
-# Discordance analysis on gene trees Tribe and subtribe level
-# Show the proportion of gene trees for which clades are supported/rejected
-cd "${DISCOVISTA_DIR}" || exit
-mkdir ./results/Tribe
-# Generate clade-defs file for Tribe/subtribe level (from annotation file)
-echo "Generating clade definitions..."
-cp "${DISCOVISTA_INPUTS_TRIBE}" "${DISCOVISTA_DIR}/parameters"
-docker run -v "${DISCOVISTA_DIR}":/data esayyari/discovista generate_clade-defs.py ./parameters/annotation_mtDNA_tribe.txt ./parameters/clade-defs_mtDNA_tribe.txt
-# Run DiscoVista analysis
-echo "Running DiscoVista analysis..."
-docker run -v "${DISCOVISTA_DIR}":/data esayyari/discovista discoVista.py \
-    -c parameters/clade-defs_mtDNA_tribe.txt \
-    -p genetrees/ \
-    -t 95 \
-    -m 1 \
-    -o results/Tribe
-
-echo "DiscoVista analysis completed. Results are in ${DISCOVISTA_RESULTS}"
 
 # Discordance analysis on gene trees Family Subfamily level
 # Show the proportion of gene trees for which clades are supported/rejected
@@ -87,36 +65,46 @@ docker run -v "${DISCOVISTA_DIR}":/data esayyari/discovista discoVista.py \
     -t 95 \
     -m 1 \
     -o results/Family
-
 echo "DiscoVista analysis completed. Results are in ${DISCOVISTA_RESULTS}"
 
+# Discordance analysis on gene trees Tribe and subtribe level
+# Show the proportion of gene trees for which clades are supported/rejected
+cd "${DISCOVISTA_DIR}" || exit
+mkdir ./results/Tribe
+# Generate clade-defs file for Tribe/subtribe level (from annotation file)
+echo "Generating clade definitions..."
+cp "${DISCOVISTA_INPUTS_TRIBE}" "${DISCOVISTA_DIR}/parameters"
+docker run -v "${DISCOVISTA_DIR}":/data esayyari/discovista generate_clade-defs.py ./parameters/annotation_mtDNA_tribe.txt ./parameters/clade-defs_mtDNA_tribe.txt
+# Run DiscoVista analysis
+echo "Running DiscoVista analysis..."
+docker run -v "${DISCOVISTA_DIR}":/data esayyari/discovista discoVista.py \
+    -c parameters/clade-defs_mtDNA_tribe.txt \
+    -p genetrees/ \
+    -t 95 \
+    -m 1 \
+    -o results/Tribe
+echo "DiscoVista analysis completed. Results are in ${DISCOVISTA_RESULTS}"
 
 # Relative frequencies analysis 
 # Copy and organize species and gene trees for Relative frequency analysis
 cd "${DISCOVISTA_DIR}" || exit
 mkdir -p "${DISCOVISTA_FREQ}"/MtDNA_genes-ML
 cp "${CONCAT_TREE}" ./species/estimated_species_tree.tree
-
 # retrieve mtDNA species tree and ML gene trees
 # ML gene trees need to be on a single file. one tree per line
 cp "${DISCOVISTA_TREES}"/estimated_species_tree.tree "${DISCOVISTA_FREQ}"/MtDNA_genes-ML
 cp "${GENE_TREES_ML}" "${DISCOVISTA_FREQ}"/MtDNA_genes-ML/estimated_gene_trees.tree
 cp "${DISCOVISTA_INPUTS_TRIBE_MONOPHYLY}" "${DISCOVISTA_DIR}/parameters"
 
-# Realtive frequencies analysis - family level 
-cp "${DISCOVISTA_INPUTS_FAMILY}" "${DISCOVISTA_DIR}/parameters"
-mkdir -p "${DISCOVISTA_RESULTS}"/relativeFreq/family
-docker run -v "${DISCOVISTA_DIR}":/data esayyari/discovista discoVista.py -a parameters/annotation_mtDNA_family.txt -m 5 -p relativeFreq/MtDNA_genes-ML -o results/relativeFreq/family -g Outgroup
-echo "DiscoVista analysis completed. Results are in ${DISCOVISTA_RESULTS}/relativeFreq/family"
+# Relative frequencies analysis - family level discordance (1)
+cp "${DISCOVISTA_INPUTS_DISC_1}" "${DISCOVISTA_DIR}/parameters"
+mkdir -p "${DISCOVISTA_RESULTS}"/relativeFreq/Discordance_1
+docker run -v "${DISCOVISTA_DIR}":/data esayyari/discovista discoVista.py -a parameters/annotation_mtDNA_discordance_1.txt -m 5 -p relativeFreq/MtDNA_genes-ML -o results/relativeFreq/Discordance_1 -g Outgroup
+echo "DiscoVista analysis completed. Results are in ${DISCOVISTA_RESULTS}/relativeFreq/Discordance_1"
 
-# Relative frequencies analysis - Tribe/subtribe
-# determine frequency of all three topologies around focal branches of the infered species trees
-mkdir -p "${DISCOVISTA_RESULTS}"/relativeFreq/Tribe_subtribe
-docker run -v "${DISCOVISTA_DIR}":/data esayyari/discovista discoVista.py -a parameters/annotation_mtDNA_tribe_monophyly.txt -m 5 -p relativeFreq/MtDNA_genes-ML -o results/relativeFreq/Tribe_subtribe -g Outgroup
-echo "DiscoVista analysis completed. Results are in ${DISCOVISTA_RESULTS}/relativeFreq/Tribe_subtribe"
+# Realtive frequencies analysis - species level discordance(2)
+cp "${DISCOVISTA_INPUTS_DISC_2}" "${DISCOVISTA_DIR}/parameters"
+mkdir -p "${DISCOVISTA_RESULTS}"/relativeFreq/Discordance_2
+docker run -v "${DISCOVISTA_DIR}":/data esayyari/discovista discoVista.py -a parameters/annotation_mtDNA_discordance_2.txt -m 5 -p relativeFreq/MtDNA_genes-ML -o results/relativeFreq/Discordance_2 -g Outgroup
+echo "DiscoVista analysis completed. Results are in ${DISCOVISTA_RESULTS}/relativeFreq/Discordance_2"
 
-# Realtive frequencies analysis - species level 
-cp "${DISCOVISTA_INPUTS_SPECIES}" "${DISCOVISTA_DIR}/parameters"
-mkdir -p "${DISCOVISTA_RESULTS}"/relativeFreq/species
-docker run -v "${DISCOVISTA_DIR}":/data esayyari/discovista discoVista.py -a parameters/annotation_mtDNA_species.txt -m 5 -p relativeFreq/MtDNA_genes-ML -o results/relativeFreq/species -g Outgroup
-echo "DiscoVista analysis completed. Results are in ${DISCOVISTA_RESULTS}/relativeFreq/species"
