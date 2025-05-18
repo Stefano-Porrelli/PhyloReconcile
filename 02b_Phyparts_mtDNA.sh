@@ -3,7 +3,7 @@
 #                             PhyloReconcile                                   #
 #                                                                              #
 #                   Script_02b - 1. Detection of ILS with PhyParts             #
-#                       Mitochondrial and Y_chromosome data                    #
+#                                 Mitochondrial                                #
 #------------------------------------------------------------------------------#
 
 PHYPARTS="$HOME/phyparts/target/phyparts-0.0.1-SNAPSHOT-jar-with-dependencies.jar"
