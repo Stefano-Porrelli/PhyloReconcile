@@ -18,6 +18,7 @@ DISCOVISTA_RESULTS="${DISCOVISTA_DIR}/results"
 DISCOVISTA_FREQ="${DISCOVISTA_DIR}/relativeFreq"
 DISCOVISTA_INPUTS_TRIBE="${BASE_DIR}/01_initial_data/Input_files/DiscoVista_parameters_mtDNA/annotation_mtDNA_tribe.txt"
 DISCOVISTA_INPUTS_FAMILY="${BASE_DIR}/01_initial_data/Input_files/DiscoVista_parameters_mtDNA/annotation_mtDNA_family.txt"
+DISCOVISTA_INPUTS_SPECIES="${BASE_DIR}/01_initial_data/Input_files/DiscoVista_parameters_mtDNA/annotation_mtDNA_species.txt"
 DISCOVISTA_FREQ="${DISCOVISTA_DIR}/relativeFreq"
 DISCOVISTA_INPUTS_TRIBE_MONOPHYLY="${BASE_DIR}/01_initial_data/Input_files/DiscoVista_parameters_mtDNA/annotation_mtDNA_tribe_monophyly.txt"
 
@@ -102,8 +103,20 @@ cp "${DISCOVISTA_TREES}"/estimated_species_tree.tree "${DISCOVISTA_FREQ}"/MtDNA_
 cp "${GENE_TREES_ML}" "${DISCOVISTA_FREQ}"/MtDNA_genes-ML/estimated_gene_trees.tree
 cp "${DISCOVISTA_INPUTS_TRIBE_MONOPHYLY}" "${DISCOVISTA_DIR}/parameters"
 
+# Realtive frequencies analysis - family level 
+cp "${DISCOVISTA_INPUTS_FAMILY}" "${DISCOVISTA_DIR}/parameters"
+mkdir -p "${DISCOVISTA_RESULTS}"/relativeFreq/family
+docker run -v "${DISCOVISTA_DIR}":/data esayyari/discovista discoVista.py -a parameters/annotation_mtDNA_family.txt -m 5 -p relativeFreq/MtDNA_genes-ML -o results/relativeFreq/family -g Outgroup
+echo "DiscoVista analysis completed. Results are in ${DISCOVISTA_RESULTS}/relativeFreq/family"
+
 # Relative frequencies analysis - Tribe/subtribe
 # determine frequency of all three topologies around focal branches of the infered species trees
 mkdir -p "${DISCOVISTA_RESULTS}"/relativeFreq/Tribe_subtribe
 docker run -v "${DISCOVISTA_DIR}":/data esayyari/discovista discoVista.py -a parameters/annotation_mtDNA_tribe_monophyly.txt -m 5 -p relativeFreq/MtDNA_genes-ML -o results/relativeFreq/Tribe_subtribe -g Outgroup
 echo "DiscoVista analysis completed. Results are in ${DISCOVISTA_RESULTS}/relativeFreq/Tribe_subtribe"
+
+# Realtive frequencies analysis - species level 
+cp "${DISCOVISTA_INPUTS_SPECIES}" "${DISCOVISTA_DIR}/parameters"
+mkdir -p "${DISCOVISTA_RESULTS}"/relativeFreq/species
+docker run -v "${DISCOVISTA_DIR}":/data esayyari/discovista discoVista.py -a parameters/annotation_mtDNA_species.txt -m 5 -p relativeFreq/MtDNA_genes-ML -o results/relativeFreq/species -g Outgroup
+echo "DiscoVista analysis completed. Results are in ${DISCOVISTA_RESULTS}/relativeFreq/species"
