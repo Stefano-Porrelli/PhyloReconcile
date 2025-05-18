@@ -2,7 +2,7 @@
 #------------------------------------------------------------------------------#
 #                           PhyloReconcile                                     #
 #                                                                              #
-# Script_02b - 1. Visualization of gene tree and species tree discordance      #
+# Script_02b - 2. Visualization of gene tree and species tree discordance      #
 # with DiscoVista                                                              #
 #------------------------------------------------------------------------------#
 BASE_DIR="$(pwd)/PhyloReconcile"
