@@ -2,7 +2,7 @@
 #------------------------------------------------------------------------------#
 #                             PhyloReconcile                                   #
 #                                                                              #
-#                   Script_02b - 2. Detection of ILS with PhyParts             #
+#                   Script_02b - 1. Detection of ILS with PhyParts             #
 #                       Mitochondrial and Y_chromosome data                    #
 #------------------------------------------------------------------------------#
 
