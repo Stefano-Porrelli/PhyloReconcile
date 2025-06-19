@@ -1,0 +1,11 @@
+Tragelaphus_imberbis_LEK543
+Tragelaphus_angasii_MBP15
+Tragelaphus_strepsiceors_GTK544
+Tragelaphus_oryx_CME1477
+Tragelaphus_scriptus_C7AR31
+Tragelaphus_scriptus_BUB555
+Tragelaphus_scriptus_sylvaticus_MBP2
+Tragelaphus_spekii_STG9200
+Tragelaphus_buxtoni_MNT9119
+Tragelaphus_eurycerus_T51
+Bos_taurus_ARSUCD12

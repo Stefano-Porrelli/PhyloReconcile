@@ -1,0 +1,144 @@
+Panthera leo Ple1
+Equus asinus ASM1607732v2
+Ceratotherium simum simum ASM2365373v1
+Tursiops truncatus mTurTru1
+Tursiops aduncus CRI000098
+Sousa chinensis SCSF
+Grampus griseus S2556
+Monodon monoceros NGI 2
+Phocoena phocoena BS71
+Lipotes vexillifer NC007629
+Kogia breviceps mKogBre1
+Physeter macrocephalus NC002503
+Eubalaena japonica EubJap
+Caperea marginata Cmar C18
+Balaenoptera acutorostrata NC005271
+Balaenoptera musculus NC001601
+Eschrichtius robustus mEscRob2
+Hippopotamus amphibius ASM2306583v1
+Hexaprotodon liberiensis NC 020697
+Sus scrofa Sscrofa11
+Phacochoerus africanus W100
+Phacochoerus africanus WHEZ1
+Vicugna pacos VicPac3
+Camelus dromedarius CamDro3
+Tragulus kanchii ASM2237692v1
+Tragulus javanicus US108
+Antilocapra americana GSC phorn 10
+Antilocapra americana PH2016
+Okapia johnstoni TBG
+Giraffa camelopardalis GFE
+Giraffa camelopardalis antiquorum PLA01
+Giraffa camelopardalis rothschildi ASM1759144v1
+Giraffa tippelskirchi OR1865
+Odocoileus virginianus OVIR
+Rangifer tarandus granti KJH003
+Hydropotes inermis NWPU
+Alces alces MIG12
+Cervus elaphus RED
+Cervus elaphus hippelaphus CERELA1
+Cervus canadensis ASM1932006v1
+Muntiacus reevesi NWPU
+Muntiacus gongshanensis ASM2022602v1
+Muntiacus muntjak UCB Mmun
+Moschus berezovskii FMD
+Moschus berezovskii NPU MBRE 10
+Tetracerus quadricornis AHTET7226
+Boselaphus tragocamelus NIGLAU
+Tragelaphus imberbis LEK543
+Tragelaphus scriptus BUB555
+Tragelaphus scriptus C7AR31
+Tragelaphus scriptus sylvaticus MBP2
+Tragelaphus angasii MBP15
+Tragelaphus strepsiceors GTK544
+Tragelaphus oryx CME1477
+Tragelaphus spekii STG9200
+Tragelaphus eurycerus BNG9162
+Tragelaphus eurycerus T51
+Tragelaphus eurycerus MTraEu
+Tragelaphus buxtoni MNT9119
+Syncerus caffer ABF221
+Syncerus caffer AHSCZAK
+Syncerus caffer CAB
+Bubalus kerabau CUSA SWP
+Bubalus bubalis AAUIN
+Bubalus bubalis BGI
+Bubalus bubalis CKM7
+Bubalus bubalis NDDB SH 1
+Bubalus bubalis UMD CASPUR WB 20
+Bubalus bubalis UOAWB
+Bubalus bubalis V0754
+Bubalus depressicornis ANT3
+Pseudoryx nghetinhensis AHPNTTN
+Pseudoryx nghetinhensis SAO1
+Bison bison bison UMD10
+Bison bonasus BBO 3569
+Bison bonasus BBO 3574
+Bos taurus HF 90
+Bos indicus GIR
+Bos taurus ARSUCD12
+Bos indicus HARINDF
+Bos mutus WY2019
+Bos mutus YAKQH1
+Bos grunniens YAKHY00
+Bos sauveli KOU
+Bos javanicus AHT2182
+Bos javanicus birmanicus AHT2146
+Bos frontalis NRC MITH
+Bos frontalis Drung1
+Bos gaurus AHGS3586
+Bos gaurus ARS UOA
+Aepyceros melampus IMP
+Neotragus moschatus SUN
+Neotragus pygmaeus RAL
+Procapra przewalskii PLG
+Raphicerus campestris SNB
+Madoqua kirkii KDD
+Ourebia ourebi ORB4223
+Saiga tatarica BIUU
+Litocranius walleri GRK
+Antidorcas marsupialis SGB
+Eudorcas thomsonii TMG
+Nanger granti GTG
+Nanger dama ORGONE 02
+Nanger dama ruficollis SCBI Ndam 10
+Gazella cuvieri G13
+Gazella cuvieri G29
+Redunca redunca BHR
+Kobus ellipsiprymnus DFW
+Kobus leche leche Klec v10
+Oreotragus oreotragus KSP
+Cephalophus harveyi HVD
+Sylvicapra grimmia CMD5126
+Philantomba maxwellii MXD
+Damaliscus lunatus CTB
+Alcelaphus buselaphus HBT
+Connochaetes taurinus BWD
+Beatragus hunteri BeaHun v1 BIUU
+Hippotragus equinus ASM1643309v1
+Hippotragus niger niger SCBI HNig 10q
+Addax nasomaculatus ASM1959352v1
+Oryx gazella OR4864
+Oryx dammah SCBI Odam 11
+Ovibos moschatus ASM2146233v1
+Ovibos moschatus ASM2253363v2
+Ovis canadensis canadensis 43U
+Ovis ammon KGZ
+Ovis ammon AGL
+Ovis ammon polii CAU MHL
+Ovis aries HU2020
+Ovis aries ARS UI
+Ovis orientalis AMUF
+Ovis nivicola lydekkeri OvNiv10
+Ammotragus lervia ALER
+Budorcas taxicolor Takin10
+Oreamnos americanus ASM975805v1
+Pseudois nayaur ASM318257v1
+Nilgiritragus hylocrius BIUU
+Hemitragus jemlahicus T2177
+Capra sibirica CNS
+Capra aegagrus CAPAEG
+Capra falconeri MB4115
+Capra hircus ARS1
+Capra hircus BBG1
+Pantholops hodgsonii NC007441

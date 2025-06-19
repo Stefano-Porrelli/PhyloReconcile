@@ -1,0 +1,2 @@
+Antilocapridae	Antilopinae	Balaenopteridae	Bovidae	Bovinae	Camelidae	Capreolinae	Cervidae	Cervinae	Delphinidae	Giraffidae	Hippopotamidae	Mysticeti	Moschidae	Odontoceti	Physeteridae	Phocoenidae+Monodontidae	Suidae	Tragulidae
+Antilocapridae	Antilopinae	Balaenopteridae	Bovidae	Bovinae	Camelidae	Capreolinae	Cervidae	Cervinae	Delphinidae	Giraffidae	Hippopotamidae	Mysticeti	Moschidae	Odontoceti	Physeteridae	Phocoenidae+Monodontidae	Suidae	Tragulidae

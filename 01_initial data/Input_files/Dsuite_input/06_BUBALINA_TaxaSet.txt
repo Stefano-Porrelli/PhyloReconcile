@@ -1,0 +1,14 @@
+Syncerus_caffer_ABF221	S_caffer
+Syncerus_caffer_AHSCZAK	S_caffer
+Syncerus_caffer_CAB	S_caffer
+Bubalus_depressicornis_ANT3	B_depressicornis
+Bubalus_kerabau_CUSA_SWP	B_kerabau
+Bubalus_bubalis_CKM7	B_kerabau
+Bubalus_bubalis_V0754	B_kerabau
+Bubalus_bubalis_BGI	B_bubalis_BGI
+Bubalus_bubalis_UOAWB	B_bubalis
+Bubalus_bubalis_UMD_CASPUR_WB_20	B_bubalis
+Bubalus_bubalis_AAUIN	B_bubalis_AAUIN
+Bubalus_bubalis_NDDB_SH_1	B_bubalis_NDDB_SH_1
+Bos_taurus_HF_90	Outgroup
+Bos_taurus_ARSUCD12	Outgroup

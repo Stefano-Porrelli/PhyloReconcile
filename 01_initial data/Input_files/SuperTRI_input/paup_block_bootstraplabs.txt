@@ -1,0 +1,9 @@
+begin paup;
+    set autoclose=yes warntree=no warnreset=no;
+    log start file=MRP_boot.log replace;
+    execute MRP.nex;
+    outgroup Panthera_leo_Ple1;
+    bootstrap nreps=1000 keepall=yes treefile=boot_labels.tre search=heuristic/  collapse=no;
+    savetrees file=synthesistree_boot_labels.tre replace=yes format=altnex brlens=no supportvalues=nodelab;
+    quit;
+end;

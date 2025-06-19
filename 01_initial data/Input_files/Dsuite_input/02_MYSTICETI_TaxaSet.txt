@@ -1,0 +1,6 @@
+Physeter_macrocephalus_NC002503	Outgroup
+Eubalaena_japonica_EubJap	E_japonica
+Caperea_marginata_Cmar_C18	C_marginata
+Balaenoptera_acutorostrata_NC005271	B_acutorostrata
+Balaenoptera_musculus_NC001601	B_musculus
+Eschrichtius_robustus_mEscRob2	E_robustus

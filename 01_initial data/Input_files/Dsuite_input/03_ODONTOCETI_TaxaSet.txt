@@ -1,0 +1,10 @@
+Tursiops_truncatus_mTurTru1	T_truncatus
+Tursiops_aduncus_CRI000098	T_aduncus
+Sousa_chinensis_SCSF	S_chinensis
+Grampus_griseus_S2556	G_griseus
+Monodon_monoceros_NGI_2	M_monoceros
+Phocoena_phocoena_BS71	P_phocoena
+Lipotes_vexillifer_NC007629	L_vexillifer
+Kogia_breviceps_mKogBre1	K_breviceps
+Physeter_macrocephalus_NC002503	P_macrocephalus
+Eubalaena_japonica_EubJap	Outgroup

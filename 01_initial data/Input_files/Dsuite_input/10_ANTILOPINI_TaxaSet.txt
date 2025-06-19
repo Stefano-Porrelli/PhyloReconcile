@@ -1,0 +1,14 @@
+Capra_hircus_ARS1	Outgroup
+Capra_hircus_BBG1	Outgroup
+Neotragus_pygmaeus_RAL	N_pygmaeus
+Saiga_tatarica_BIUU	S_tatarica
+Eudorcas_thomsonii_TMG	E_thomsonii
+Nanger_granti_GTG	N_granti
+Nanger_dama_ORGONE_02	N_dama
+Nanger_dama_ruficollis_SCBI_Ndam_10	N_dama_ruficollis
+Gazella_cuvieri_G13	G_cuvieri
+Gazella_cuvieri_G29	G_cuvieri
+Oreotragus_oreotragus_KSP	O_oreotragus
+Cephalophus_harveyi_HVD	C_harveyi
+Sylvicapra_grimmia_CMD5126	S_grimmia
+Philantomba_maxwellii_MXD	P_maxwellii

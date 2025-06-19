@@ -1,0 +1,11 @@
+Damaliscus_lunatus_CTB	D_lunatus
+Alcelaphus_buselaphus_HBT	A_buselaphus
+Connochaetes_taurinus_BWD	C_taurinus
+Beatragus_hunteri_BeaHun_v1_BIUU	B_hunteri
+Hippotragus_equinus_ASM1643309v1	H_equinus
+Hippotragus_niger_niger_SCBI_HNig_10q	H_niger_niger
+Addax_nasomaculatus_ASM1959352v1	A_nasomaculatus
+Oryx_gazella_OR4864	O_gazella
+Oryx_dammah_SCBI_Odam_11	O_dammah
+Capra_hircus_ARS1	Outgroup
+Capra_hircus_BBG1	Outgroup

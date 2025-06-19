@@ -1,0 +1,12 @@
+Cephalophus_harveyi_HVD
+Sylvicapra_grimmia_CMD5126
+Philantomba_maxwellii_MXD
+Raphicerus_campestris_SNB
+Antidorcas_marsupialis_SGB
+Litocranius_walleri_GRK
+Saiga_tatarica_BIUU
+Gazella_cuvieri_G13
+Nanger_granti_GTG
+Nanger_dama_ruficollis_SCBI_Ndam_10
+Nanger_dama_ORGONE_02
+Capra_hircus_ARS1
