@@ -1,6 +1,8 @@
 # PhyloReconcile <!-- omit in toc --> 
-
 A phylogenomic pipeline for resolving species relationships through multilocus data, accounting for discordance, incomplete lineage sorting (ILS), and introgression.
+
+![Pipeline Overview](01_initial_data/Pipeiline_flowchart/PhyloReconcile_flowchart.pdf)
+
 
 ## Table of contents <!-- omit in toc --> 
 - [1. Introduction](#1-introduction)
